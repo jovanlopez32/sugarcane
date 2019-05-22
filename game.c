@@ -3,6 +3,7 @@
 #include <time.h>
 
 #include "malla.h"
+#include "sprites.h"
 
 
 typedef char string [20];
@@ -18,6 +19,28 @@ int juega(int mx, int my, string texto){
     int start, end;
     //Inilizacion de variables.
     int verf=0, mousx, mousy;
+
+
+
+     // ----- carga imagenes -------------------------------------------------------------------------
+    SPRITE *cargaSp=NULL;//variable para cargar la imagen.
+   /// getimage
+    void *plyr;
+    int imgsize;
+    imgsize=imagesize(555, 55, 600, 95);
+    plyr=malloc(imgsize); /// fin getimage
+
+    outtextxy(530, 600, "CARGANDO...");
+    abrirSprite(cargaSp, "player1");
+    delay(900);
+    getimage(555, 55, 600, 95, plyr);  /// -----> getimage
+    abrirSprite(cargaSp, "plant");
+    delay(900);
+    abrirSprite(cargaSp, "explosive");
+    delay(900);
+
+
+    cleardevice();
 
 /*- Dibuja ambiente: -------------------------------------------------------------*/
 
@@ -46,17 +69,16 @@ int juega(int mx, int my, string texto){
 
     ///-- BORRAR ES UN TEST (CUADRO)------- ///
 
-    int icuadrox=60, icuadroy=80; /// ancho 54 - alto 52
-    /** 100 ->
-        97 <-
-        115 v
-        119 ^   **/
+    int ix=65, iy=85; /// ancho 54 - alto 52
+
+
+    //putimage(60,80, plyr, COPY_PUT);
 
     do{
         //funcion que imprime el tiempo
         printtime(start, mx, my);
 
-        testmalla(&pM, &icuadrox, &icuadroy);
+        testmalla(&pM, &ix, &iy, plyr);
 
 
         // - Esta parte verifica si el usuario no selecciona el boton exit -----------------------------
@@ -65,7 +87,7 @@ int juega(int mx, int my, string texto){
             verf=1;
         //------------------------------------------------------------------------------------------------
 
-    }while(verf!=1 );
+    }while(verf!=1);
 
 
     end=clock();

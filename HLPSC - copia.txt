@@ -1,0 +1,17 @@
+.:::: SUGAR CANE ::::.
+
+Historia:
+Tienes en tu poder el mas grande cultivo de caña en el mundo, pero cuidado
+porque rondan algunos enemigos que quieren acabar con tu cultivo.
+ELIMINALOS PRIMERO!!!...
+
+Controles:
+Utiliza las flechas para mover a tu personaje.
+En caso contrario utiliza las teclas:
+	w -> avanzar arriba.
+	s -> avanzar abajo.
+	d -> avanzar derecha.
+	a -> avanzar izquierda.
+
+Para poder plantar un cultivo presiona la tecla 'h'.
+

@@ -139,12 +139,14 @@ int creamalla(TNodoM **cabeza){
 
 
 
-///TESTMALLA
 
+
+
+///TESTMALLA
 #define ancho 54
 #define alto 52
 
-void testmalla(TNodoM **head, int *inix, int *iniy){
+void testmalla(TNodoM **head, int *inix, int *iniy, void *plyr){
 
     int t;
 
@@ -170,6 +172,6 @@ void testmalla(TNodoM **head, int *inix, int *iniy){
         }
 
     }
-    rectangle(*inix, *iniy, *inix+ancho, *iniy+alto);
+    putimage(*inix, *iniy, plyr, COPY_PUT);
 
 }

@@ -1,0 +1,49 @@
+# depslib dependency file v1.0
+1558400410 source:c:\users\jovan lopez\desktop\sugar cane\portada.c
+	<stdio.h>
+	<graphics.h>
+
+1550108813 c:\program files (x86)\codeblocks-ep\sdk\winbgim\include\graphics.h
+	<windows.h>
+	<limits.h>
+	<sstream>
+
+1558400406 source:c:\users\jovan lopez\desktop\sugar cane\main.c
+	<stdio.h>
+	<stdlib.h>
+	<graphics.h>
+
+1558400408 source:c:\users\jovan lopez\desktop\sugar cane\menu.c
+	<stdio.h>
+	<graphics.h>
+
+1558400404 source:c:\users\jovan lopez\desktop\sugar cane\ayuda.c
+	<stdio.h>
+	<graphics.h>
+
+1558496712 source:c:\users\jovan lopez\desktop\sugar cane\game.c
+	<stdio.h>
+	<graphics.h>
+	<time.h>
+	"malla.h"
+	"sprites.h"
+
+1558400410 source:c:\users\jovan lopez\desktop\sugar cane\textografico.c
+	<stdio.h>
+	<stdlib.h>
+	<graphics.h>
+
+1558400410 source:c:\users\jovan lopez\desktop\sugar cane\records.c
+	<stdio.h>
+	<stdlib.h>
+	<graphics.h>
+
+1558497519 c:\users\jovan lopez\desktop\sugar cane\malla.h
+	<stdio.h>
+	<stdlib.h>
+	<graphics.h>
+
+1557799978 source:c:\users\jovan lopez\desktop\sugar cane\malla.c
+
+1558496422 c:\users\jovan lopez\desktop\sugar cane\sprites.h
+
