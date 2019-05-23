@@ -140,13 +140,11 @@ int creamalla(TNodoM **cabeza){
 
 
 
-
-
 ///TESTMALLA
 #define ancho 54
 #define alto 52
 
-void testmalla(TNodoM **head, int *inix, int *iniy, void *plyr){
+void movimiento(TNodoM **head, int *inix, int *iniy, void *plyr){
 
     int t;
 
