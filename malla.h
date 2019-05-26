@@ -137,14 +137,52 @@ int creamalla(TNodoM **cabeza){
         return verf;
 }
 
+#define ancho 54
+#define alto 52
+
+void dibujaMalla(void *plant,void *explosive,void *sun){
+
+
+    FILE *M;
+    char buffer[2];
+
+    M=fopen("Nivel1.bin", "rb");
+
+    int i=65, j=85, tamx=ancho;
+
+    if(M!=NULL)
+        while(!feof(M)){
+        fread(buffer,sizeof(char), 1, M);
+
+        if(!strcmp(buffer, "\n")){
+            setcolor(WHITE);
+            j+=alto;
+            i=65;
+            }
+        if(!strcmp(buffer, "1")){
+           putimage(i,j,plant,COPY_PUT);
+        }
+        if(!strcmp(buffer, "2")){
+            putimage(i,j,sun,COPY_PUT);
+        }
+        if(!strcmp(buffer, "3")){
+            putimage(i,j,explosive,COPY_PUT);
+        }
+
+        i+=ancho;
+    }
+
+
+
+
+}
+
+
 
 
 ///TESTMALLA
 
-#define ancho 54
-#define alto 52
-
-void testmalla(TNodoM **head, int *inix, int *iniy){
+int movimiento(TNodoM **head, int *inix, int *iniy, void *plyr){
 
     int t;
 
@@ -152,7 +190,7 @@ void testmalla(TNodoM **head, int *inix, int *iniy){
 
         t=getch();
 
-        if(t==100 && (*head)->right){ /// ->
+        if(t=='d' && (*head)->right){ /// ->
             *inix+=ancho;
             (*head)=(*head)->right;
         }
@@ -170,6 +208,8 @@ void testmalla(TNodoM **head, int *inix, int *iniy){
         }
 
     }
-    rectangle(*inix, *iniy, *inix+ancho, *iniy+alto);
+    putimage(*inix, *iniy, plyr, COPY_PUT);
+
+    return t;
 
 }
