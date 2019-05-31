@@ -10,6 +10,7 @@ int menu(int mx, int my);
 int juega(int mx, int my, string texto);
 void inittextxy(int Xmax, int Ymax, string texto);
 int opcayuda(int mx, int my);
+int records(int mx, int my);
 
 int main(void){
 
@@ -57,7 +58,10 @@ int main(void){
     ///Records.
     case 1:{
         cleardevice();
+        back=records(maxx, maxy);
 
+        if(back==1)
+            goto regreso;
         break;
     }
 

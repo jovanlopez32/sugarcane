@@ -64,6 +64,7 @@ int opcayuda(int mx, int my){
     }while(verf == -1);
 
 /* .:::::::::::::::::::::::::::::::::::::.   */
+    fclose(HLPSC);
 
     return verf;
 

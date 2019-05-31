@@ -7,6 +7,7 @@ typedef struct nodo{
 	struct nodo *down;
 	struct nodo *left;
 	struct nodo *right;
+	int dato;
 }TNodoM;
 
 
@@ -137,14 +138,66 @@ int creamalla(TNodoM **cabeza){
         return verf;
 }
 
+#define ancho 54
+#define alto 52
+
+void dibujaMalla(void *plant,void *explosive,void *mosca, TNodoM **prin){
+
+
+    FILE *M;
+    char buffer[2];
+    TNodoM *auxderecha=*prin;
+    TNodoM *auxabajo=*prin;
+
+    M=fopen("Nivel1.bin", "rb");
+
+    int i=65, j=85;
+
+    if(M!=NULL)
+
+        while(!feof(M)){
+
+        fread(buffer,sizeof(char), 1, M);
+        //auxderecha->dato=0;
+        if(!strcmp(buffer, "\n")){
+            setcolor(WHITE);
+            j+=alto;
+            i=65;
+            auxabajo=auxabajo->down;
+            auxderecha=auxabajo;
+            }
+        if(!strcmp(buffer, "0")){
+            auxderecha->dato=0;
+        }
+        if(!strcmp(buffer, "1")){
+           putimage(i,j,mosca,COPY_PUT);
+           auxderecha->dato=1;
+        }
+        if(!strcmp(buffer, "2")){
+            putimage(i,j,plant,COPY_PUT);
+            auxderecha->dato=2;
+        }
+        if(!strcmp(buffer, "3")){
+            putimage(i,j,explosive,COPY_PUT);
+            auxderecha->dato=3;
+        }
+
+        auxderecha=auxderecha->right;
+
+        i+=ancho;
+    }
+
+
+
+
+}
+
+
 
 
 ///TESTMALLA
 
-#define ancho 54
-#define alto 52
-
-void testmalla(TNodoM **head, int *inix, int *iniy){
+int movimiento(TNodoM **head, int *inix, int *iniy, void *plyr){ ///TNodoM **prin - NodoPrincipal
 
     int t;
 
@@ -152,24 +205,27 @@ void testmalla(TNodoM **head, int *inix, int *iniy){
 
         t=getch();
 
-        if(t==100 && (*head)->right){ /// ->
+        if(t=='d' && (*head)->right && (*head)->right->dato<=1){ /// ->
             *inix+=ancho;
             (*head)=(*head)->right;
         }
-        if(t==97 && (*head)->left){    /// <-
+        if(t==97 && (*head)->left && (*head)->left->dato<=1){    /// <-
             *inix-=ancho;
             (*head)=(*head)->left;
         }
-        if(t==115 && (*head)->down){
+        if(t==115 && (*head)->down && (*head)->down->dato<=1){
             *iniy+=alto;
             (*head)=(*head)->down;
         }
-        if(t==119 && (*head)->up){
+        if(t==119 && (*head)->up && (*head)->up->dato<=1){
             *iniy-=alto;
             (*head)=(*head)->up;
         }
 
+
     }
-    rectangle(*inix, *iniy, *inix+ancho, *iniy+alto);
+    putimage(*inix, *iniy, plyr, COPY_PUT);
+
+    return t;
 
 }
